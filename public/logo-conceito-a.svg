@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" fill="none">
+  <!--
+    CONCEITO A — "A Chama Pura"
+    Uma chama única, elegante e orgânica. Simples, atemporal, premium.
+    A chama é o focolare — o centro de tudo.
+  -->
+
+  <!-- Halo / base da lareira em azul suave -->
+  <ellipse cx="32" cy="54" rx="16" ry="6" fill="#2B5F8A" opacity="0.12"/>
+
+  <!-- Corpo principal da chama — âmbar quente -->
+  <path d="
+    M 32,58
+    C 20,52 12,40 16,24
+    C 19,12 32,6 32,6
+    C 32,6 45,12 48,24
+    C 52,40 44,52 32,58
+    Z
+  " fill="#C96B1E"/>
+
+  <!-- Núcleo interno da chama — mais claro, quente -->
+  <path d="
+    M 32,52
+    C 23,47 18,37 21,26
+    C 23,18 32,14 32,14
+    C 32,14 41,18 43,26
+    C 46,37 41,47 32,52
+    Z
+  " fill="#E8924A"/>
+
+  <!-- Centro vivo — quase branco/creme -->
+  <ellipse cx="32" cy="36" rx="7" ry="11" fill="#F5C89A" opacity="0.85"/>
+
+  <!-- VILA -->
+  <text
+    x="62" y="30"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="11"
+    font-weight="400"
+    fill="#4A8BBF"
+    letter-spacing="3"
+  >VILA</text>
+
+  <!-- Focolare -->
+  <text
+    x="62" y="52"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#2B5F8A"
+    letter-spacing="0.5"
+  >Focolare</text>
+
+  <!-- Tagline opcional -->
+  <text
+    x="63" y="65"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="8"
+    font-weight="400"
+    fill="#64748B"
+    letter-spacing="1"
+  >Cuidado com alma</text>
+</svg>

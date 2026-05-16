@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" fill="none">
+  <!--
+    CONCEITO C — "O Encontro" (A Unidade)
+    Dois elementos que se curvam um em direção ao outro e se encontram,
+    formando uma chama no centro. Referência direta ao carisma do
+    Movimento dos Focolares: a unidade, o amor recíproco, o encontro.
+    Dois se tornam um.
+  -->
+
+  <!-- Elemento esquerdo — curva azul que se abre para a direita -->
+  <path d="
+    M 14,60
+    C 14,48 10,32 18,18
+    C 24,8 32,6 32,6
+    C 32,6 24,14 22,26
+    C 20,38 22,50 22,60
+    Z
+  " fill="#2B5F8A"/>
+
+  <!-- Elemento direito — curva espelhada, azul mais suave -->
+  <path d="
+    M 50,60
+    C 50,48 54,32 46,18
+    C 40,8 32,6 32,6
+    C 32,6 40,14 42,26
+    C 44,38 42,50 42,60
+    Z
+  " fill="#2B5F8A" opacity="0.75"/>
+
+  <!-- A chama do encontro — surge onde os dois se unem -->
+  <path d="
+    M 32,52
+    C 26,46 23,38 26,28
+    C 28,20 32,16 32,16
+    C 32,16 36,20 38,28
+    C 41,38 38,46 32,52
+    Z
+  " fill="#C96B1E"/>
+
+  <!-- Brilho do encontro -->
+  <ellipse cx="32" cy="36" rx="5" ry="9" fill="#F5E8D5" opacity="0.8"/>
+
+  <!-- Ponto de convergência no topo — onde os dois se tocam -->
+  <circle cx="32" cy="7" r="3.5" fill="#C96B1E"/>
+
+  <!-- Linha fina de conexão -->
+  <line x1="32" y1="10" x2="32" y2="16" stroke="#C96B1E" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- VILA -->
+  <text
+    x="64" y="30"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="11"
+    font-weight="400"
+    fill="#4A8BBF"
+    letter-spacing="3"
+  >VILA</text>
+
+  <!-- Focolare -->
+  <text
+    x="64" y="52"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#2B5F8A"
+    letter-spacing="0.5"
+  >Focolare</text>
+
+  <text
+    x="65" y="65"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="8"
+    font-weight="400"
+    fill="#64748B"
+    letter-spacing="1"
+  >Cuidado com alma</text>
+</svg>

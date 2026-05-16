@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vila Focolare — Comparação de Logos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #F0EDE8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 40px 20px 60px;
+    }
+    .page-header { text-align: center; margin-bottom: 48px; }
+    .page-header h1 { color: #2B5F8A; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .page-header p { color: #64748B; font-size: 14px; font-family: 'Inter', sans-serif; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    }
+
+    .card-header {
+      padding: 20px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-letter {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: #2B5F8A;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #C96B1E;
+      background: #FEF3E8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card-title {
+      padding: 12px 24px 4px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #1E293B;
+    }
+
+    .card-desc {
+      padding: 0 24px 16px;
+      font-size: 12.5px;
+      color: #64748B;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .preview-section {
+      padding: 0 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .preview-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #94A3B8;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .bg-light {
+      background: #F9F7F4;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bg-dark {
+      background: #2B5F8A;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bg-white-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-full { width: 100%; max-width: 210px; height: auto; }
+    .logo-full-dark { width: 100%; max-width: 210px; height: auto; filter: brightness(10); }
+
+    .icons-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .icon-box {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .icon-box img { width: 40px; height: 40px; object-fit: contain; }
+    .icon-blue { background: #2B5F8A; }
+    .icon-white { background: white; border: 1px solid #E2E8F0; }
+    .icon-cream { background: #F9F7F4; border: 1px solid #E2E8F0; }
+
+    .divider { height: 1px; background: #F1F5F9; margin: 4px 0; }
+
+    .footer { text-align: center; color: #94A3B8; font-size: 12px; margin-top: 48px; font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Vila Focolare — 7 Conceitos de Logomarca</h1>
+  <p>Cada conceito parte de uma filosofia diferente. Identifique qual ressoa com o espírito da Vila.</p>
+</div>
+
+<div class="grid">
+
+  <!-- A -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">A</div>
+      <span class="card-tag">Minimalista · Atemporal</span>
+    </div>
+    <div class="card-title">A Chama Pura</div>
+    <div class="card-desc">Uma única chama orgânica e elegante. Nada mais. O focolare na sua essência — o fogo que aquece, ilumina e reúne.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-a.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-a.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-a.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-a.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-a.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">B</div>
+      <span class="card-tag">Proteção · Abrigo</span>
+    </div>
+    <div class="card-title">O Lar Acolhedor</div>
+    <div class="card-desc">Uma casa com contornos suaves que guarda a chama em seu interior. A chama está protegida — como os residentes dentro da Vila.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-b.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-b.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-b.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-b.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-b.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">C</div>
+      <span class="card-tag">Carisma · Unidade</span>
+    </div>
+    <div class="card-title">O Encontro</div>
+    <div class="card-desc">Dois elementos se curvam um ao outro e se unem — formando uma chama no centro. Referência direta ao carisma Focolare: "onde dois ou três se reunirem..."</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-c.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-c.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-c.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-c.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-c.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">D</div>
+      <span class="card-tag">Tipográfico · Distintivo</span>
+    </div>
+    <div class="card-title">O Monograma F</div>
+    <div class="card-desc">A letra F de Focolare redesenhada como chama. O traço vertical é o corpo do fogo; os traços horizontais são línguas de chama em âmbar e azul. Letra e símbolo em um.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-d.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-d.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-d.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-d.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-d.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">E</div>
+      <span class="card-tag">Orgânico · Vida</span>
+    </div>
+    <div class="card-title">A Folha Viva</div>
+    <div class="card-desc">Uma folha que também é uma chama. Folha = vida, cuidado, natureza. Chama = focolare, calor, presença. A nervura central em âmbar une as duas leituras.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-e.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-e.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-e.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-e.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-e.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">F</div>
+      <span class="card-tag">Institucional · Premium</span>
+    </div>
+    <div class="card-title">O Círculo Sagrado</div>
+    <div class="card-desc">Um círculo perfeito envolve a chama. O círculo representa comunidade, totalidade, mandala. Transmite solidez institucional — ideal para documentos, carimbos, uniformes.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-f.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-f.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-f.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-f.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-f.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-letter">G</div>
+      <span class="card-tag">Esperança · Novo dia</span>
+    </div>
+    <div class="card-title">O Amanhecer</div>
+    <div class="card-desc">Um sol nascente com 7 raios (número sagrado) e núcleo em âmbar. O sol É a lareira — a grande chama que aquece a todos. Esperança, renovação, a luz de cada novo dia.</div>
+    <div class="preview-section">
+      <div><div class="preview-label">Fundo creme</div>
+        <div class="bg-light"><img class="logo-full" src="logo-conceito-g.svg"></div></div>
+      <div><div class="preview-label">Fundo escuro</div>
+        <div class="bg-dark"><img class="logo-full" src="logo-conceito-g.svg"></div></div>
+      <div><div class="preview-label">Ícone do app</div>
+        <div class="icons-row">
+          <div class="icon-box icon-blue"><img src="logo-conceito-g.svg"></div>
+          <div class="icon-box icon-white"><img src="logo-conceito-g.svg"></div>
+          <div class="icon-box icon-cream"><img src="logo-conceito-g.svg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>7 conceitos · Vila Focolare © 2026 · Igarassu-PE</p>
+  <p style="margin-top:6px;">Paleta aprovada: Azul Focolari <strong>#2B5F8A</strong> · Âmbar da Lareira <strong>#C96B1E</strong></p>
+  <p style="margin-top:8px; font-size:11px;">Abra este arquivo no navegador (Chrome/Edge) para visualização completa</p>
+</div>
+
+</body>
+</html>

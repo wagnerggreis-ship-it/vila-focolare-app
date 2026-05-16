@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" fill="none">
+  <!--
+    ENCONTRO 1 — "A Mandorla"
+    A Mandorla (ou Vesica Piscis) é um dos símbolos mais antigos do
+    Cristianismo — surge da intersecção de dois círculos iguais.
+    Representa a união entre o divino e o humano, o céu e a terra.
+    Chiara Lubich falou muito sobre "o espaço entre dois que se amam".
+    Aqui: dois arcos (dois "eus") que ao se encontrar criam
+    um terceiro espaço — quente, âmbar, sagrado.
+  -->
+
+  <!-- Arco esquerdo — azul profundo -->
+  <path d="
+    M 30,10
+    C 12,10 4,20 4,38
+    C 4,56 12,68 30,68
+    C 22,58 20,50 20,38
+    C 20,26 22,18 30,10 Z
+  " fill="#2B5F8A"/>
+
+  <!-- Arco direito — azul médio (levemente mais suave para criar profundidade) -->
+  <path d="
+    M 42,10
+    C 60,10 68,20 68,38
+    C 68,56 60,68 42,68
+    C 50,58 52,50 52,38
+    C 52,26 50,18 42,10 Z
+  " fill="#2B5F8A" opacity="0.75"/>
+
+  <!-- A Mandorla — o espaço sagrado do encontro, em âmbar -->
+  <path d="
+    M 36,10
+    C 28,16 24,26 24,38
+    C 24,50 28,60 36,68
+    C 44,60 48,50 48,38
+    C 48,26 44,16 36,10 Z
+  " fill="#C96B1E"/>
+
+  <!-- Luz no coração da mandorla -->
+  <ellipse cx="36" cy="38" rx="8" ry="14" fill="#F5C89A" opacity="0.7"/>
+  <ellipse cx="36" cy="38" rx="4" ry="7" fill="#FDF4E8" opacity="0.8"/>
+
+  <!-- Ponto de convergência superior — onde os dois se tocam -->
+  <circle cx="36" cy="8" r="3" fill="#C96B1E"/>
+
+  <!-- VILA -->
+  <text x="82" y="32"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+
+  <!-- Focolare -->
+  <text x="82" y="56"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+
+  <text x="83" y="69"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+</svg>

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Identidade Visual — Vila Focolare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-950: #0f2a40;
+      --blue-900: #1a3d5c;
+      --blue-800: #2B5F8A;
+      --blue-600: #4A8BBF;
+      --blue-300: #9FC5E0;
+      --blue-100: #E8F3FA;
+      --blue-50:  #f4f9fd;
+      --amber-500: #C96B1E;
+      --amber-400: #d9843c;
+      --amber-300: #E8924A;
+      --amber-200: #f2c99a;
+      --amber-100: #F5E8D5;
+      --amber-50:  #fdf6ee;
+      --warm:  #F9F7F4;
+      --warm-100: #f0ece6;
+      --muted: #64748B;
+      --dark:  #2D3748;
+      --border:#CBD5E1;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; color:var(--dark); background:var(--warm); line-height:1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      background:rgba(15,42,64,0.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.07);
+      height:60px; padding:0 40px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:12px; font-weight:500; letter-spacing:.5px; transition:color .2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-dl { background:var(--amber-500); color:#fff; padding:8px 20px; border-radius:8px; font-size:12px; font-weight:700; text-decoration:none; font-family:inherit; transition:background .2s; }
+    .nav-dl:hover { background:var(--amber-400); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height:100vh; padding-top:60px;
+      background:linear-gradient(140deg, var(--blue-950) 0%, #1c3f5e 60%, #1a3d5c 100%);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      position:relative; overflow:hidden; text-align:center;
+    }
+    .hero-glow {
+      position:absolute; width:700px; height:700px;
+      background:radial-gradient(circle, rgba(201,107,30,.13) 0%, transparent 68%);
+      top:50%; left:50%; transform:translate(-50%,-50%);
+      animation:pulseGlow 5s ease-in-out infinite;
+    }
+    @keyframes pulseGlow { 0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.18)} }
+    .hero-content { position:relative; z-index:1; animation:fadeUp .9s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:36px; }
+    .hero-logo { width:440px; max-width:85vw; margin-bottom:48px; }
+    .hero-title { font-size:clamp(30px,5vw,50px); font-weight:800; color:#fff; line-height:1.15; margin-bottom:12px; }
+    .hero-sub { font-size:17px; color:rgba(255,255,255,.5); }
+    .hero-arrow { position:absolute; bottom:36px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; color:rgba(255,255,255,.3); font-size:10px; letter-spacing:2px; text-transform:uppercase; animation:bob 2.4s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(10px)} }
+    .hero-arrow svg { width:20px; height:20px; }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:1160px; margin:0 auto; padding:96px 40px; }
+    .wrap-dark { background:var(--blue-950); }
+    .chip { display:inline-block; font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--amber-500); margin-bottom:12px; }
+    .chip-light { color:rgba(255,255,255,.45); }
+    h2.section-title { font-size:clamp(26px,4vw,40px); font-weight:800; color:var(--blue-800); line-height:1.2; margin-bottom:14px; }
+    h2.section-title-light { color:#fff; }
+    .section-desc { font-size:16px; color:var(--muted); max-width:580px; line-height:1.75; }
+    .section-desc-light { color:rgba(255,255,255,.5); }
+    .section-head { margin-bottom:60px; }
+    .divider { height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
+
+    /* ── CONCEITO ── */
+    .concept-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .concept-icon-wrap { display:flex; justify-content:center; }
+    .concept-icon-wrap svg { width:200px; height:224px; filter:drop-shadow(0 24px 48px rgba(201,107,30,.25)); animation:flamePulse 3.5s ease-in-out infinite; }
+    @keyframes flamePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+    .concept-items { display:flex; flex-direction:column; gap:28px; }
+    .concept-item { display:flex; gap:18px; }
+    .ci-icon { width:44px; height:44px; border-radius:12px; background:var(--blue-100); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+    .ci-text h4 { font-size:15px; font-weight:700; color:var(--blue-800); margin-bottom:3px; }
+    .ci-text p { font-size:13px; color:var(--muted); line-height:1.65; }
+
+    /* ── LOGO PRINCIPAL ── */
+    .logo-showcase {
+      background:#fff; border:1px solid var(--border); border-radius:20px;
+      padding:72px 60px; display:flex; flex-direction:column; align-items:center; gap:32px;
+      position:relative; overflow:hidden;
+    }
+    .logo-showcase::before {
+      content:''; position:absolute; inset:0;
+      background-image:linear-gradient(rgba(74,139,191,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,139,191,.04) 1px,transparent 1px);
+      background-size:40px 40px;
+    }
+    .clearspace { position:relative; z-index:1; }
+    .cs-box { border:1.5px dashed rgba(201,107,30,.5); padding:28px; border-radius:4px; position:relative; }
+    .cs-tag { position:absolute; background:var(--amber-500); color:#fff; font-size:9px; font-weight:700; letter-spacing:1px; padding:3px 8px; border-radius:4px; }
+    .cs-tag.top    { top:-11px;  left:50%; transform:translateX(-50%); }
+    .cs-tag.bottom { bottom:-11px; left:50%; transform:translateX(-50%); }
+    .cs-tag.left   { left:-38px; top:50%; transform:translateY(-50%) rotate(-90deg); }
+    .cs-tag.right  { right:-38px; top:50%; transform:translateY(-50%) rotate(90deg); }
+    .logo-showcase svg { max-width:100%; }
+    .logo-note { font-size:12px; color:var(--muted); text-align:center; line-height:1.6; max-width:480px; background:var(--blue-50); border-radius:10px; padding:14px 20px; position:relative; z-index:1; }
+
+    /* ── VARIAÇÕES ── */
+    .var-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .var-card { border-radius:16px; overflow:hidden; }
+    .var-preview { padding:36px 28px; display:flex; align-items:center; justify-content:center; min-height:150px; }
+    .var-preview svg { max-width:100%; max-height:100px; }
+    .bg-white    { background:#fff;              border:1px solid var(--border); }
+    .bg-warm     { background:var(--warm);        border:1px solid var(--border); }
+    .bg-blue     { background:var(--blue-800); }
+    .bg-deep     { background:var(--blue-950); }
+    .bg-amber-l  { background:var(--amber-100); border:1px solid var(--amber-200); }
+    .var-info { background:#fff; border:1px solid var(--border); border-top:none; padding:14px 18px; }
+    .var-info h4 { font-size:13px; font-weight:700; color:var(--blue-800); margin-bottom:3px; }
+    .var-info p  { font-size:11px; color:var(--muted); line-height:1.5; }
+
+    /* ── CORES ── */
+    .color-group { margin-bottom:44px; }
+    .color-group-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:18px; }
+    .swatches { display:grid; grid-template-columns:repeat(auto-fill,minmax(152px,1fr)); gap:14px; }
+    .swatch { border-radius:12px; overflow:hidden; cursor:pointer; transition:transform .2s; }
+    .swatch:hover { transform:translateY(-5px); }
+    .swatch-color { height:92px; position:relative; }
+    .swatch-color.main::after { content:'PRINCIPAL'; position:absolute; bottom:8px; right:8px; background:rgba(255,255,255,.2); color:rgba(255,255,255,.9); font-size:9px; font-weight:700; letter-spacing:1.5px; padding:2px 7px; border-radius:4px; }
+    .swatch-body { padding:13px; background:rgba(255,255,255,.06); }
+    .swatch-name { font-size:12px; font-weight:700; color:#fff; margin-bottom:3px; }
+    .swatch-hex  { font-size:11px; color:rgba(255,255,255,.5); font-family:'Courier New',monospace; cursor:pointer; }
+    .swatch-rgb  { font-size:10px; color:rgba(255,255,255,.3); font-family:'Courier New',monospace; margin-top:2px; }
+
+    /* ── TIPOGRAFIA ── */
+    .type-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:40px; margin-bottom:24px; }
+    .type-family-row { display:grid; grid-template-columns:260px 1fr; gap:48px; align-items:start; }
+    .type-big { font-size:48px; font-weight:800; color:var(--blue-800); letter-spacing:-1px; line-height:1; margin-bottom:8px; }
+    .type-meta-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+    .weights { display:flex; flex-direction:column; gap:6px; }
+    .w-row { display:flex; align-items:center; gap:12px; font-size:13px; }
+    .w-label { color:var(--muted); font-size:11px; width:72px; flex-shrink:0; }
+    .w-sample { color:var(--blue-800); }
+    .type-hier { display:flex; flex-direction:column; gap:0; }
+    .th-row { display:flex; align-items:baseline; gap:20px; padding:16px 0; border-bottom:1px solid var(--border); }
+    .th-row:last-child { border-bottom:none; }
+    .th-tag  { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); width:64px; flex-shrink:0; }
+    .th-spec { font-size:10px; color:rgba(100,116,139,.55); font-family:monospace; width:130px; flex-shrink:0; }
+    .th-h1   { font-size:34px; font-weight:800; color:var(--blue-800); line-height:1.1; }
+    .th-h2   { font-size:26px; font-weight:700; color:var(--blue-800); }
+    .th-h3   { font-size:20px; font-weight:600; color:var(--blue-800); }
+    .th-body { font-size:15px; color:var(--dark); line-height:1.7; }
+    .th-cap  { font-size:12px; color:var(--muted); letter-spacing:.5px; }
+    .th-lbl  { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--amber-500); }
+
+    /* ── APLICAÇÕES ── */
+    .app-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .app-card { border-radius:18px; overflow:hidden; }
+    .app-preview { height:190px; display:flex; align-items:center; justify-content:center; padding:28px; }
+    .app-preview svg { max-width:100%; max-height:120px; }
+    .app-info { padding:14px 18px; background:#fff; border:1px solid var(--border); border-top:none; }
+    .app-name { font-size:13px; font-weight:700; color:var(--blue-800); margin-bottom:2px; }
+    .app-desc { font-size:11px; color:var(--muted); }
+
+    /* ── DOS & DONTS ── */
+    .dd-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+    .dd-col h3 { font-size:16px; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+    .badge-do   { background:#16A34A; color:#fff; font-size:11px; font-weight:800; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; }
+    .badge-dont { background:#DC2626; color:#fff; font-size:11px; font-weight:800; width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; }
+    .rule-list { display:flex; flex-direction:column; gap:14px; }
+    .rule-card { border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+    .rule-preview { background:var(--warm); height:110px; display:flex; align-items:center; justify-content:center; padding:16px; position:relative; }
+    .rule-preview.do-border   { border-bottom:3px solid #16A34A; }
+    .rule-preview.dont-border { border-bottom:3px solid #DC2626; }
+    .rule-preview svg { max-height:80px; }
+    .rule-text { padding:10px 14px; background:#fff; font-size:12px; color:var(--muted); line-height:1.5; }
+
+    /* ── TAMANHOS ── */
+    .size-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .size-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:32px 24px; text-align:center; }
+    .size-lbl  { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .size-val  { font-size:32px; font-weight:800; color:var(--blue-800); margin-bottom:8px; }
+    .size-note { font-size:12px; color:var(--muted); line-height:1.5; }
+    .size-preview { margin:20px 0 16px; display:flex; align-items:center; justify-content:center; }
+
+    /* ── DOWNLOADS ── */
+    .dl-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .dl-card { background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .2s, box-shadow .2s; }
+    .dl-card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,.10); }
+    .dl-preview { height:130px; display:flex; align-items:center; justify-content:center; padding:20px; }
+    .dl-preview svg { max-height:72px; max-width:100%; }
+    .dl-info { padding:14px 18px; border-top:1px solid var(--border); }
+    .dl-name   { font-size:13px; font-weight:700; color:var(--blue-800); margin-bottom:2px; }
+    .dl-format { font-size:11px; color:var(--muted); margin-bottom:10px; }
+    .dl-btn { display:inline-flex; align-items:center; gap:6px; background:var(--blue-100); color:var(--blue-800); padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; text-decoration:none; font-family:inherit; transition:background .2s; }
+    .dl-btn:hover { background:var(--blue-300); }
+
+    /* ── FOOTER ── */
+    footer { background:var(--blue-950); color:rgba(255,255,255,.35); text-align:center; padding:40px; font-size:12px; }
+    footer strong { color:rgba(255,255,255,.6); }
+
+    /* ── TOAST ── */
+    #toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--blue-800); color:#fff; padding:10px 24px; border-radius:100px; font-size:13px; font-weight:600; opacity:0; transition:all .3s; pointer-events:none; z-index:999; font-family:inherit; }
+    #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      .concept-grid,.dd-grid,.type-family-row { grid-template-columns:1fr; }
+      .var-grid,.app-grid { grid-template-columns:1fr 1fr; }
+      .dl-grid { grid-template-columns:1fr 1fr; }
+      .nav-links { display:none; }
+    }
+    @media(max-width:600px) {
+      .wrap { padding:64px 24px; }
+      .var-grid,.app-grid,.size-grid,.dl-grid { grid-template-columns:1fr; }
+      .logo-showcase { padding:40px 20px; }
+    }
+    @media print {
+      nav,.hero-arrow { display:none; }
+      .hero { min-height:auto; page-break-after:always; }
+      * { animation:none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <svg width="130" height="40" viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+    <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+    <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+    <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+    <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+    <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+    <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.6)" letter-spacing="3">VILA</text>
+    <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+    <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.45)" letter-spacing="1.2">Cuidado com alma</text>
+  </svg>
+  <ul class="nav-links">
+    <li><a href="#conceito">Conceito</a></li>
+    <li><a href="#logomarca">Logomarca</a></li>
+    <li><a href="#variacoes">Variações</a></li>
+    <li><a href="#cores">Cores</a></li>
+    <li><a href="#tipografia">Tipografia</a></li>
+    <li><a href="#aplicacoes">Aplicações</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+  </ul>
+  <a class="nav-dl" href="#downloads">↓ Downloads</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Manual de Identidade Visual</p>
+    <svg class="hero-logo" viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+      <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+      <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+      <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+      <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+      <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+      <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.6)" letter-spacing="3">VILA</text>
+      <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+      <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.45)" letter-spacing="1.2">Cuidado com alma</text>
+    </svg>
+    <h1 class="hero-title">Identidade que<br>nasce do cuidado</h1>
+    <p class="hero-sub">Uma marca construída sobre o gesto mais humano: o abraço.</p>
+  </div>
+  <div class="hero-arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    rolar
+  </div>
+</section>
+
+<!-- ── CONCEITO ── -->
+<section id="conceito">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">01 — O Conceito</p>
+      <h2 class="section-title">O Abraço</h2>
+      <p class="section-desc">A logomarca nasce de um gesto: dois braços que sobem das laterais, curvam-se para dentro e se encontram no alto — formando uma chama no espaço que abraçam.</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-icon-wrap">
+        <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+          <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+          <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+          <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+          <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+          <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+          <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+        </svg>
+      </div>
+      <div class="concept-items">
+        <div class="concept-item">
+          <div class="ci-icon">🤝</div>
+          <div class="ci-text">
+            <h4>Os Dois Braços</h4>
+            <p>Representam os cuidadores e a instituição — sempre em movimento ascendente, nunca rígidos. O gesto do abraço é o gesto do cuidado real.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">🔥</div>
+          <div class="ci-text">
+            <h4>A Chama</h4>
+            <p>"Focolare" em italiano significa lareira — o lugar do calor, do encontro, da vida compartilhada. A chama nasce exatamente onde os braços se unem.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">✦</div>
+          <div class="ci-text">
+            <h4>O Ponto de Encontro</h4>
+            <p>O círculo no topo marca o instante preciso do abraço — o ponto onde dois caminhos se encontram e algo novo nasce: calor, vínculo, presença.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="ci-icon">🏡</div>
+          <div class="ci-text">
+            <h4>Vila — o território do cuidado</h4>
+            <p>Uma vila é um lugar onde as pessoas se conhecem pelo nome. Não uma instituição, mas uma comunidade onde cada pessoa importa e é vista.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LOGOMARCA PRINCIPAL ── -->
+<section id="logomarca">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">02 — Logomarca Principal</p>
+      <h2 class="section-title">A Versão Primária</h2>
+      <p class="section-desc">Esta é a versão oficial da marca. Use-a sempre que possível — sobre fundos claros e limpos, com área de proteção respeitada.</p>
+    </div>
+    <div class="logo-showcase">
+      <div class="clearspace">
+        <div class="cs-box">
+          <span class="cs-tag top">1× altura "V"</span>
+          <span class="cs-tag bottom">1× altura "V"</span>
+          <span class="cs-tag left">1× altura "V"</span>
+          <span class="cs-tag right">1× altura "V"</span>
+          <svg width="520" viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+      </div>
+      <p class="logo-note">A área de proteção corresponde à altura da letra "V" em VILA (~11px em tamanho real da logo). Nenhum elemento visual deve invadir esse espaço.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── VARIAÇÕES ── -->
+<section id="variacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">03 — Variações</p>
+      <h2 class="section-title">Versões Aprovadas</h2>
+      <p class="section-desc">Use apenas estas variações. Cada uma foi criada para um contexto específico de aplicação.</p>
+    </div>
+    <div class="var-grid">
+
+      <!-- Horizontal Padrão -->
+      <div class="var-card">
+        <div class="var-preview bg-white">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Horizontal — Padrão</h4>
+          <p>Versão principal. Use em documentos, site e materiais impressos com fundo branco ou claro.</p>
+        </div>
+      </div>
+
+      <!-- Negativa (white) -->
+      <div class="var-card">
+        <div class="var-preview bg-deep">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.65)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.5)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Negativa — Fundo Escuro</h4>
+          <p>Para fundos azul-profundo, dark mode e materiais com fundo escuro.</p>
+        </div>
+      </div>
+
+      <!-- Vertical -->
+      <div class="var-card">
+        <div class="var-preview bg-warm" style="min-height:180px">
+          <svg viewBox="0 0 150 142" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:130px">
+            <g transform="translate(39, 4)">
+              <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+              <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+              <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+              <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+              <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+              <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+              <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            </g>
+            <text x="75" y="92" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="10" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="75" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="22" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="75" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="7.5" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Vertical — Centralizada</h4>
+          <p>Para aplicações quadradas: perfil, avatar, crachás e sinalização.</p>
+        </div>
+      </div>
+
+      <!-- Ícone -->
+      <div class="var-card">
+        <div class="var-preview bg-amber-l">
+          <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:80px">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Símbolo — Ícone</h4>
+          <p>Apenas o símbolo. Para favicon, app icon, watermark e contextos muito reduzidos.</p>
+        </div>
+      </div>
+
+      <!-- Monocromática -->
+      <div class="var-card">
+        <div class="var-preview bg-white">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.65"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#4A8BBF"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#9FC5E0"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#E8F3FA" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#4A8BBF"/>
+            <circle cx="36" cy="10" r="2" fill="#E8F3FA"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Monocromática — Azul</h4>
+          <p>Para impressão em uma cor, documentos internos e situações de baixo custo gráfico.</p>
+        </div>
+      </div>
+
+      <!-- Negativa no azul -->
+      <div class="var-card">
+        <div class="var-preview bg-blue">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.55)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="var-info">
+          <h4>Negativa — Fundo Azul</h4>
+          <p>Para fundos na cor primária da marca. Mantém a identidade visual com contraste total.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CORES ── -->
+<section id="cores" class="wrap-dark">
+  <div class="wrap" style="padding-top:96px;padding-bottom:96px;max-width:1160px;margin:0 auto">
+    <div class="section-head">
+      <p class="chip chip-light">04 — Cores Institucionais</p>
+      <h2 class="section-title section-title-light">Paleta da Marca</h2>
+      <p class="section-desc section-desc-light">Duas famílias de cores que expressam a alma da Vila Focolare: o azul da confiança e o âmbar da lareira.</p>
+    </div>
+
+    <div class="color-group">
+      <p class="color-group-label">Família Azul — Confiança e Profissionalismo</p>
+      <div class="swatches">
+        <div class="swatch" onclick="copyColor('#2B5F8A')">
+          <div class="swatch-color main" style="background:#2B5F8A"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Azul Profundo</p>
+            <p class="swatch-hex">#2B5F8A</p>
+            <p class="swatch-rgb">rgb(43, 95, 138)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#4A8BBF')">
+          <div class="swatch-color" style="background:#4A8BBF"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Azul Médio</p>
+            <p class="swatch-hex">#4A8BBF</p>
+            <p class="swatch-rgb">rgb(74, 139, 191)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#9FC5E0')">
+          <div class="swatch-color" style="background:#9FC5E0"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Azul Suave</p>
+            <p class="swatch-hex">#9FC5E0</p>
+            <p class="swatch-rgb">rgb(159, 197, 224)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#E8F3FA')">
+          <div class="swatch-color" style="background:#E8F3FA"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Azul Claro</p>
+            <p class="swatch-hex">#E8F3FA</p>
+            <p class="swatch-rgb">rgb(232, 243, 250)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#0f2a40')">
+          <div class="swatch-color" style="background:#0f2a40"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Azul Noite</p>
+            <p class="swatch-hex">#0f2a40</p>
+            <p class="swatch-rgb">rgb(15, 42, 64)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <p class="color-group-label">Família Âmbar — Calor e Acolhimento</p>
+      <div class="swatches">
+        <div class="swatch" onclick="copyColor('#C96B1E')">
+          <div class="swatch-color main" style="background:#C96B1E"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Âmbar Vivo</p>
+            <p class="swatch-hex">#C96B1E</p>
+            <p class="swatch-rgb">rgb(201, 107, 30)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#E8924A')">
+          <div class="swatch-color" style="background:#E8924A"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Âmbar Quente</p>
+            <p class="swatch-hex">#E8924A</p>
+            <p class="swatch-rgb">rgb(232, 146, 74)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#F5C89A')">
+          <div class="swatch-color" style="background:#F5C89A"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Âmbar Suave</p>
+            <p class="swatch-hex">#F5C89A</p>
+            <p class="swatch-rgb">rgb(245, 200, 154)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#F5E8D5')">
+          <div class="swatch-color" style="background:#F5E8D5"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Âmbar Pálido</p>
+            <p class="swatch-hex">#F5E8D5</p>
+            <p class="swatch-rgb">rgb(245, 232, 213)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-group" style="margin-bottom:0">
+      <p class="color-group-label">Neutros</p>
+      <div class="swatches">
+        <div class="swatch" onclick="copyColor('#F9F7F4')">
+          <div class="swatch-color" style="background:#F9F7F4;border:1px solid rgba(255,255,255,0.1)"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Branco Quente</p>
+            <p class="swatch-hex">#F9F7F4</p>
+            <p class="swatch-rgb">rgb(249, 247, 244)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#64748B')">
+          <div class="swatch-color" style="background:#64748B"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Cinza Texto</p>
+            <p class="swatch-hex">#64748B</p>
+            <p class="swatch-rgb">rgb(100, 116, 139)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#2D3748')">
+          <div class="swatch-color" style="background:#2D3748"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Escuro</p>
+            <p class="swatch-hex">#2D3748</p>
+            <p class="swatch-rgb">rgb(45, 55, 72)</p>
+          </div>
+        </div>
+        <div class="swatch" onclick="copyColor('#CBD5E1')">
+          <div class="swatch-color" style="background:#CBD5E1"></div>
+          <div class="swatch-body">
+            <p class="swatch-name">Borda</p>
+            <p class="swatch-hex">#CBD5E1</p>
+            <p class="swatch-rgb">rgb(203, 213, 225)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIPOGRAFIA ── -->
+<section id="tipografia">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">05 — Tipografia</p>
+      <h2 class="section-title">Plus Jakarta Sans</h2>
+      <p class="section-desc">Uma typeface moderna e humanista — legível, acessível e com personalidade. Usada em todos os materiais da Vila Focolare.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="type-family-row">
+        <div>
+          <p class="type-big">Ag</p>
+          <p class="type-meta-desc">Plus Jakarta Sans é uma fonte variable com excelente legibilidade em telas e impressão. Seus traços levemente humanistas comunicam cuidado e clareza.</p>
+          <div class="weights">
+            <div class="w-row"><span class="w-label">Light 300</span><span class="w-sample" style="font-weight:300">Vila Focolare</span></div>
+            <div class="w-row"><span class="w-label">Regular 400</span><span class="w-sample" style="font-weight:400">Vila Focolare</span></div>
+            <div class="w-row"><span class="w-label">Medium 500</span><span class="w-sample" style="font-weight:500">Vila Focolare</span></div>
+            <div class="w-row"><span class="w-label">Semi 600</span><span class="w-sample" style="font-weight:600">Vila Focolare</span></div>
+            <div class="w-row"><span class="w-label">Bold 700</span><span class="w-sample" style="font-weight:700">Vila Focolare</span></div>
+            <div class="w-row"><span class="w-label">Extra 800</span><span class="w-sample" style="font-weight:800">Vila Focolare</span></div>
+          </div>
+        </div>
+        <div class="type-hier">
+          <div class="th-row">
+            <span class="th-tag">H1</span>
+            <span class="th-spec">800 · 36px · 1.15</span>
+            <span class="th-h1">Cuidado com alma</span>
+          </div>
+          <div class="th-row">
+            <span class="th-tag">H2</span>
+            <span class="th-spec">700 · 28px · 1.25</span>
+            <span class="th-h2">Residentes e famílias</span>
+          </div>
+          <div class="th-row">
+            <span class="th-tag">H3</span>
+            <span class="th-spec">600 · 20px · 1.35</span>
+            <span class="th-h3">Plano de cuidados individuais</span>
+          </div>
+          <div class="th-row">
+            <span class="th-tag">Body</span>
+            <span class="th-spec">400 · 15px · 1.7</span>
+            <span class="th-body">A Vila Focolare é um espaço onde cada pessoa é acolhida com dignidade, presença e cuidado integral.</span>
+          </div>
+          <div class="th-row">
+            <span class="th-tag">Caption</span>
+            <span class="th-spec">400 · 12px · 1.5</span>
+            <span class="th-cap">Atualizado em 12 de maio de 2026</span>
+          </div>
+          <div class="th-row">
+            <span class="th-tag">Label</span>
+            <span class="th-spec">700 · 10px · ls 3</span>
+            <span class="th-lbl">Cuidado com alma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── APLICAÇÕES ── -->
+<section id="aplicacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">06 — Aplicações</p>
+      <h2 class="section-title">A Marca em Contexto</h2>
+      <p class="section-desc">Versões aprovadas para cada tipo de fundo. Use sempre a versão que garante máximo contraste e legibilidade.</p>
+    </div>
+    <div class="app-grid">
+
+      <div class="app-card">
+        <div class="app-preview" style="background:#fff;border:1px solid var(--border);border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Fundo Branco</p><p class="app-desc">Documentos, site, apresentações e formulários</p></div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-preview" style="background:#F9F7F4;border:1px solid var(--border);border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Branco Quente</p><p class="app-desc">App, dashboard, interfaces internas e telas do sistema</p></div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-preview" style="background:#F5E8D5;border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Âmbar Pálido</p><p class="app-desc">Comunicações calorosas, folders e materiais de acolhimento</p></div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-preview" style="background:#2B5F8A;border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.55)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Azul Primário</p><p class="app-desc">Banners, crachás, capa de relatórios e comunicação institucional</p></div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-preview" style="background:#0f2a40;border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.65)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.5)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Azul Noite</p><p class="app-desc">Dark mode do sistema, eventos noturnos e materiais premium</p></div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-preview" style="background:linear-gradient(135deg,#1a3d5c,#2B5F8A);border-radius:18px 18px 0 0">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.55)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="app-info"><p class="app-name">Gradiente Institucional</p><p class="app-desc">Capas, apresentações formais e materiais de destaque</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── DOS & DON'Ts ── -->
+<section id="usos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">07 — Uso Correto</p>
+      <h2 class="section-title">O que Fazer e Evitar</h2>
+      <p class="section-desc">A integridade visual da marca depende de uso consistente. Estes exemplos orientam aplicações corretas e incorretas.</p>
+    </div>
+    <div class="dd-grid">
+      <div class="dd-col">
+        <h3 style="color:#16A34A"><span class="badge-do">✓</span> Uso Correto</h3>
+        <div class="rule-list">
+          <div class="rule-card">
+            <div class="rule-preview do-border">
+              <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:60px">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+                <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+                <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+                <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+                <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+              </svg>
+            </div>
+            <p class="rule-text">Usar a logo em suas proporções originais, sobre fundo limpo e com contraste adequado.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rule-preview do-border" style="background:#2B5F8A">
+              <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:60px">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+                <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+                <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="3">VILA</text>
+                <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+                <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.55)" letter-spacing="1.2">Cuidado com alma</text>
+              </svg>
+            </div>
+            <p class="rule-text">Usar a versão negativa (branca) exclusivamente em fundos escuros ou na cor primária da marca.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rule-preview do-border">
+              <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:55px">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+                <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+              </svg>
+            </div>
+            <p class="rule-text">Usar o símbolo isolado (sem texto) somente onde a marca já é reconhecida, como ícone de app ou favicon.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-col">
+        <h3 style="color:#DC2626"><span class="badge-dont">✕</span> Uso Incorreto</h3>
+        <div class="rule-list">
+          <div class="rule-card">
+            <div class="rule-preview dont-border">
+              <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:60px;transform:scaleX(1.35) scaleY(0.75)">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+                <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+                <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+                <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+                <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+              </svg>
+            </div>
+            <p class="rule-text">Nunca distorcer, esticar ou comprimir a logo. Sempre redimensionar de forma proporcional.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rule-preview dont-border">
+              <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:60px">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#DC2626"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#DC2626" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#7C3AED"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#A855F7"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#DDD6FE" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#7C3AED"/>
+                <circle cx="36" cy="10" r="2" fill="#DDD6FE"/>
+                <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#DC2626" letter-spacing="3">VILA</text>
+                <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#DC2626" letter-spacing="0.5">Focolare</text>
+                <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#7C3AED" letter-spacing="1.2">Cuidado com alma</text>
+              </svg>
+            </div>
+            <p class="rule-text">Nunca alterar as cores da logo. Use apenas as versões aprovadas neste manual.</p>
+          </div>
+          <div class="rule-card">
+            <div class="rule-preview dont-border">
+              <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:60px;transform:rotate(-18deg)">
+                <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+                <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+                <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+                <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+                <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+                <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+                <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+                <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+                <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+                <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+              </svg>
+            </div>
+            <p class="rule-text">Nunca rotacionar ou inclinar a logo. Ela deve sempre aparecer na horizontal ou vertical aprovada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TAMANHOS ── -->
+<section id="tamanhos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">08 — Tamanho Mínimo</p>
+      <h2 class="section-title">Legibilidade Garantida</h2>
+      <p class="section-desc">Nunca reproduza a logo abaixo destes tamanhos mínimos — a legibilidade e integridade visual devem ser preservadas em qualquer aplicação.</p>
+    </div>
+    <div class="size-grid">
+      <div class="size-card">
+        <p class="size-lbl">Digital</p>
+        <div class="size-preview">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:120px">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <p class="size-val">120px</p>
+        <p class="size-note">Largura mínima em telas. Para dimensões menores, use apenas o símbolo.</p>
+      </div>
+      <div class="size-card">
+        <p class="size-lbl">Impresso</p>
+        <div class="size-preview">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100px">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <p class="size-val">3 cm</p>
+        <p class="size-note">Largura mínima em materiais impressos (300 dpi). Abaixo disso, use o símbolo.</p>
+      </div>
+      <div class="size-card">
+        <p class="size-lbl">Símbolo Mínimo</p>
+        <div class="size-preview">
+          <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+          </svg>
+        </div>
+        <p class="size-val">24px</p>
+        <p class="size-note">Tamanho mínimo do símbolo isolado. Usado em favicon e ícones pequenos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── DOWNLOADS ── -->
+<section id="downloads">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="chip">09 — Downloads</p>
+      <h2 class="section-title">Arquivos Oficiais</h2>
+      <p class="section-desc">Todos os arquivos da marca em formato SVG (vetorial, escalonável). Use sempre os arquivos originais — nunca capturas de tela ou versões comprimidas.</p>
+    </div>
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-preview" style="background:#fff;border-bottom:1px solid var(--border)">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="dl-info">
+          <p class="dl-name">Logo Principal</p>
+          <p class="dl-format">SVG · Horizontal · Colorida</p>
+          <a class="dl-btn" href="logo-encontro-2.svg" download>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            Baixar SVG
+          </a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview" style="background:#0f2a40">
+          <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
+            <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
+            <text x="80" y="32" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.65)" letter-spacing="3">VILA</text>
+            <text x="80" y="56" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">Focolare</text>
+            <text x="81" y="69" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="8" font-weight="400" fill="rgba(255,255,255,0.5)" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="dl-info">
+          <p class="dl-name">Logo Negativa</p>
+          <p class="dl-format">SVG · Horizontal · Branca</p>
+          <a class="dl-btn" href="logo-white.svg" download>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            Baixar SVG
+          </a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview" style="background:#F9F7F4;border-bottom:1px solid var(--border)">
+          <svg viewBox="0 0 150 142" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:80px">
+            <g transform="translate(39, 4)">
+              <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+              <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+              <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+              <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+              <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+              <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+              <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+            </g>
+            <text x="75" y="92" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="10" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+            <text x="75" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="22" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+            <text x="75" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',sans-serif" font-size="7.5" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+          </svg>
+        </div>
+        <div class="dl-info">
+          <p class="dl-name">Logo Vertical</p>
+          <p class="dl-format">SVG · Vertical · Colorida</p>
+          <a class="dl-btn" href="logo-vertical.svg" download>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            Baixar SVG
+          </a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview" style="background:#F5E8D5;border-bottom:1px solid var(--border)">
+          <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height:64px">
+            <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#2B5F8A"/>
+            <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#2B5F8A" opacity="0.8"/>
+            <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#C96B1E"/>
+            <ellipse cx="36" cy="44" rx="7" ry="13" fill="#E8924A"/>
+            <ellipse cx="36" cy="46" rx="4" ry="8" fill="#F5C89A" opacity="0.9"/>
+            <circle cx="36" cy="10" r="4" fill="#C96B1E"/>
+            <circle cx="36" cy="10" r="2" fill="#F5C89A"/>
+          </svg>
+        </div>
+        <div class="dl-info">
+          <p class="dl-name">Símbolo / Ícone</p>
+          <p class="dl-format">SVG · Apenas símbolo</p>
+          <a class="dl-btn" href="logo-icon.svg" download>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            Baixar SVG
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p><strong>Vila Focolare</strong> — Manual de Identidade Visual · 2026</p>
+  <p style="margin-top:8px">Todos os elementos visuais são de uso exclusivo da Vila Focolare. Cuidado com alma.</p>
+</footer>
+
+<!-- ── TOAST ── -->
+<div id="toast">Copiado para a área de transferência</div>
+
+<script>
+  function copyColor(hex) {
+    navigator.clipboard.writeText(hex).then(() => {
+      const t = document.getElementById('toast');
+      t.textContent = hex + ' copiado!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

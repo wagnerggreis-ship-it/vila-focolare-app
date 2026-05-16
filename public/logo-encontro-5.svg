@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" fill="none">
+  <!--
+    ENCONTRO 5 — "A Dança"
+    Duas formas em movimento, como dançarinos ou chamas no vento,
+    que giram uma em direção à outra de forma orgânica e dinâmica.
+    Enquanto os outros conceitos mostram o ENCONTRO como chegada,
+    este mostra como MOVIMENTO — o amor que está sempre em ato.
+    Assimetria intencional: cria leveza, vida, graça.
+  -->
+
+  <!-- Forma esquerda — curva, orgânica, gira para a direita -->
+  <!-- Nasce de baixo-esquerda, sobe e se curva para a direita -->
+  <path d="
+    M 14,68
+    C 12,56 14,42 20,30
+    C 26,18 34,10 38,8
+    C 36,12 32,18 30,26
+    C 28,34 28,44 30,54
+    C 32,60 34,64 32,68 Z
+  " fill="#2B5F8A"/>
+
+  <!-- Forma direita — curva espelhada mas não idêntica (assimetria viva) -->
+  <!-- Nasce de baixo-direita, sobe e se curva para a esquerda -->
+  <path d="
+    M 58,68
+    C 60,54 58,40 50,28
+    C 44,18 38,10 34,8
+    C 36,12 40,20 42,30
+    C 44,40 44,52 40,62
+    C 38,66 36,68 40,68 Z
+  " fill="#2B5F8A" opacity="0.78"/>
+
+  <!-- A chama do encontro — nasce onde as duas formas se aproximam mais -->
+  <!-- No centro-alto, onde o espaço entre elas é menor -->
+  <path d="
+    M 36,6
+    C 31,10 28,18 29,27
+    C 30,34 34,40 36,44
+    C 38,40 42,34 43,27
+    C 44,18 41,10 36,6 Z
+  " fill="#C96B1E"/>
+
+  <!-- Brilho interno -->
+  <ellipse cx="36" cy="27" rx="5" ry="9" fill="#E8924A"/>
+  <ellipse cx="36" cy="29" rx="3" ry="6" fill="#F5C89A" opacity="0.85"/>
+
+  <!-- Partícula de luz no topo — a fagulha do amor -->
+  <circle cx="36" cy="5" r="2.5" fill="#C96B1E"/>
+  <circle cx="36" cy="5" r="1.2" fill="#F5C89A"/>
+
+  <!-- Pequenas partículas que "voam" ao redor — dinamismo, vida -->
+  <circle cx="18" cy="22" r="1.5" fill="#4A8BBF" opacity="0.5"/>
+  <circle cx="54" cy="24" r="1.5" fill="#4A8BBF" opacity="0.5"/>
+  <circle cx="22" cy="52" r="1.2" fill="#4A8BBF" opacity="0.4"/>
+  <circle cx="50" cy="50" r="1.2" fill="#4A8BBF" opacity="0.4"/>
+
+  <!-- VILA -->
+  <text x="80" y="32"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="11" font-weight="400" fill="#4A8BBF" letter-spacing="3">VILA</text>
+
+  <text x="80" y="56"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="23" font-weight="700" fill="#2B5F8A" letter-spacing="0.5">Focolare</text>
+
+  <text x="81" y="69"
+    font-family="'Plus Jakarta Sans','Segoe UI',sans-serif"
+    font-size="8" font-weight="400" fill="#64748B" letter-spacing="1.2">Cuidado com alma</text>
+</svg>

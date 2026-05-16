@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vila Focolare — Variações do Encontro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #EDE9E3;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 40px 20px 60px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .page-header h1 {
+      color: #2B5F8A;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .page-header p {
+      color: #64748B;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Grid de 2 colunas com 1 card centrado na última linha */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #94A3B8;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #C96B1E;
+      background: #FEF3E8;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card-title {
+      padding: 14px 24px 4px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1E293B;
+    }
+
+    .card-subtitle {
+      padding: 0 24px 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #C96B1E;
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
+    }
+
+    .card-desc {
+      padding: 4px 24px 18px;
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.65;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .divider { height: 1px; background: #F1F5F9; }
+
+    .preview-area {
+      padding: 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .preview-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .bg-cream {
+      background: #F9F7F4;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .bg-blue {
+      background: #2B5F8A;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .bg-white-b {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    img.logo { width: 100%; max-width: 224px; height: auto; }
+
+    .icon-row {
+      display: flex; gap: 10px; align-items: center;
+    }
+
+    .ico {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .ico img { width: 44px; height: 44px; object-fit: contain; }
+    .ico-b { background: #2B5F8A; }
+    .ico-w { background: white; border: 1px solid #E2E8F0; }
+    .ico-c { background: #F9F7F4; border: 1px solid #E2E8F0; }
+
+    .desc-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 0 24px 20px;
+      border-top: 1px solid #F1F5F9;
+      padding-top: 16px;
+    }
+
+    .keyword {
+      font-size: 11px; font-weight: 700; color: #2B5F8A;
+      background: #E8F3FA; padding: 3px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Vila Focolare — Variações do Encontro</h1>
+  <p>5 leituras visuais do mesmo carisma Focolare: o encontro, a unidade, o amor recíproco. Qual fala mais diretamente à alma da Vila?</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1 — Mandorla -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Encontro 1</span>
+      <span class="card-tag">Tradição · Sagrado</span>
+    </div>
+    <div class="card-title">A Mandorla</div>
+    <div class="card-subtitle">"O espaço sagrado do encontro"</div>
+    <div class="card-desc">A mandorla (vesica piscis) nasce da intersecção de dois círculos iguais — símbolo cristão antiquíssimo. Dois "eus" que ao se encontrar criam um terceiro espaço luminoso. Chiara Lubich falava sobre "o espaço entre dois que se amam".</div>
+    <div class="divider"></div>
+    <div class="preview-area">
+      <div><div class="preview-lbl">Fundo creme</div>
+        <div class="bg-cream"><img class="logo" src="logo-encontro-1.svg"></div></div>
+      <div><div class="preview-lbl">Fundo escuro</div>
+        <div class="bg-blue"><img class="logo" src="logo-encontro-1.svg"></div></div>
+      <div><div class="preview-lbl">Ícones</div>
+        <div class="icon-row">
+          <div class="ico ico-b"><img src="logo-encontro-1.svg"></div>
+          <div class="ico ico-w"><img src="logo-encontro-1.svg"></div>
+          <div class="ico ico-c"><img src="logo-encontro-1.svg"></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-row">
+      <span class="keyword">Unidade</span>
+      <span class="keyword">Sagrado</span>
+      <span class="keyword">Intersecção</span>
+    </div>
+  </div>
+
+  <!-- 2 — Abraço -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Encontro 2</span>
+      <span class="card-tag">Cuidado · Proteção</span>
+    </div>
+    <div class="card-title">O Abraço</div>
+    <div class="card-subtitle">"A chama nasce quando as mãos se unem"</div>
+    <div class="card-desc">Dois braços sobem das laterais, curvam-se para dentro e se encontram no alto — protegendo a chama que nasce entre eles. É o gesto do cuidador: o abraço que aquece. Leveza e força ao mesmo tempo.</div>
+    <div class="divider"></div>
+    <div class="preview-area">
+      <div><div class="preview-lbl">Fundo creme</div>
+        <div class="bg-cream"><img class="logo" src="logo-encontro-2.svg"></div></div>
+      <div><div class="preview-lbl">Fundo escuro</div>
+        <div class="bg-blue"><img class="logo" src="logo-encontro-2.svg"></div></div>
+      <div><div class="preview-lbl">Ícones</div>
+        <div class="icon-row">
+          <div class="ico ico-b"><img src="logo-encontro-2.svg"></div>
+          <div class="ico ico-w"><img src="logo-encontro-2.svg"></div>
+          <div class="ico ico-c"><img src="logo-encontro-2.svg"></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-row">
+      <span class="keyword">Abraço</span>
+      <span class="keyword">Cuidado</span>
+      <span class="keyword">Proteção</span>
+    </div>
+  </div>
+
+  <!-- 3 — Dois Rios -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Encontro 3</span>
+      <span class="card-tag">Confluência · Fluxo</span>
+    </div>
+    <div class="card-title">Os Dois Rios</div>
+    <div class="card-subtitle">"Dois que convergem para a mesma luz"</div>
+    <div class="card-desc">Dois cursos que nascem separados nas bordas e convergem para um único ponto de luz no centro-alto. A chama surge exatamente onde se encontram. Fluido, orgânico, dinâmico — o amor que está em constante movimento.</div>
+    <div class="divider"></div>
+    <div class="preview-area">
+      <div><div class="preview-lbl">Fundo creme</div>
+        <div class="bg-cream"><img class="logo" src="logo-encontro-3.svg"></div></div>
+      <div><div class="preview-lbl">Fundo escuro</div>
+        <div class="bg-blue"><img class="logo" src="logo-encontro-3.svg"></div></div>
+      <div><div class="preview-lbl">Ícones</div>
+        <div class="icon-row">
+          <div class="ico ico-b"><img src="logo-encontro-3.svg"></div>
+          <div class="ico ico-w"><img src="logo-encontro-3.svg"></div>
+          <div class="ico ico-c"><img src="logo-encontro-3.svg"></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-row">
+      <span class="keyword">Confluência</span>
+      <span class="keyword">Movimento</span>
+      <span class="keyword">Orgânico</span>
+    </div>
+  </div>
+
+  <!-- 4 — Coração -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Encontro 4</span>
+      <span class="card-tag">Amor · Universal</span>
+    </div>
+    <div class="card-title">O Coração</div>
+    <div class="card-subtitle">"O coração emerge do encontro"</div>
+    <div class="card-desc">Duas pétalas que se inclinam uma em direção à outra e formam, juntas, a silhueta de um coração. O coração não é explícito — ele emerge do encontro. Amor e cuidado como linguagem universal.</div>
+    <div class="divider"></div>
+    <div class="preview-area">
+      <div><div class="preview-lbl">Fundo creme</div>
+        <div class="bg-cream"><img class="logo" src="logo-encontro-4.svg"></div></div>
+      <div><div class="preview-lbl">Fundo escuro</div>
+        <div class="bg-blue"><img class="logo" src="logo-encontro-4.svg"></div></div>
+      <div><div class="preview-lbl">Ícones</div>
+        <div class="icon-row">
+          <div class="ico ico-b"><img src="logo-encontro-4.svg"></div>
+          <div class="ico ico-w"><img src="logo-encontro-4.svg"></div>
+          <div class="ico ico-c"><img src="logo-encontro-4.svg"></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-row">
+      <span class="keyword">Amor</span>
+      <span class="keyword">Doação</span>
+      <span class="keyword">Universal</span>
+    </div>
+  </div>
+
+  <!-- 5 — Dança -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Encontro 5</span>
+      <span class="card-tag">Dinâmico · Vivo</span>
+    </div>
+    <div class="card-title">A Dança</div>
+    <div class="card-subtitle">"O amor que está sempre em ato"</div>
+    <div class="card-desc">Duas formas em movimento — como dançarinos ou chamas no vento — que giram uma em direção à outra. O encontro não é chegada: é um processo vivo, dinâmico. A assimetria proposital cria leveza, graça e humanidade.</div>
+    <div class="divider"></div>
+    <div class="preview-area">
+      <div><div class="preview-lbl">Fundo creme</div>
+        <div class="bg-cream"><img class="logo" src="logo-encontro-5.svg"></div></div>
+      <div><div class="preview-lbl">Fundo escuro</div>
+        <div class="bg-blue"><img class="logo" src="logo-encontro-5.svg"></div></div>
+      <div><div class="preview-lbl">Ícones</div>
+        <div class="icon-row">
+          <div class="ico ico-b"><img src="logo-encontro-5.svg"></div>
+          <div class="ico ico-w"><img src="logo-encontro-5.svg"></div>
+          <div class="ico ico-c"><img src="logo-encontro-5.svg"></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc-row">
+      <span class="keyword">Dinâmico</span>
+      <span class="keyword">Gracioso</span>
+      <span class="keyword">Vivo</span>
+    </div>
+  </div>
+
+</div>
+
+<p style="text-align:center; color:#94A3B8; font-size:12px; margin-top:48px; font-family:'Inter',sans-serif; line-height:1.8;">
+  5 variações do tema "O Encontro" · Vila Focolare © 2026 · Igarassu-PE<br>
+  <span style="font-size:11px;">Azul Focolari <strong style="color:#2B5F8A;">#2B5F8A</strong> · Âmbar da Lareira <strong style="color:#C96B1E;">#C96B1E</strong></span>
+</p>
+
+</body>
+</html>

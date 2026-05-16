@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" fill="none">
+  <!--
+    CONCEITO D — "O Monograma"
+    A letra F (de Focolare) redesenhada como uma chama.
+    O traço vertical da letra É a chama. Os traços horizontais são
+    línguas de fogo que se projetam. Tipográfico, sofisticado, único.
+    Funciona como símbolo isolado E como inicial da marca.
+  -->
+
+  <!-- Traço vertical da letra F = corpo da chama -->
+  <!-- Base larga, afunila e termina em ponta suave -->
+  <path d="
+    M 22,60
+    C 18,60 16,57 16,54
+    L 16,22
+    C 16,14 20,6 28,5
+    C 32,4.5 34,6 33,9
+    C 32,12 29,13 27,14
+    C 24,15 22,18 22,22
+    L 22,60 Z
+  " fill="#2B5F8A"/>
+
+  <!-- Traço superior do F = língua de fogo alta (âmbar) -->
+  <path d="
+    M 22,24
+    L 22,20
+    C 22,18 24,16 26,16
+    L 44,14
+    C 48,13.5 50,16 48,19
+    C 46,22 43,22 40,22
+    L 28,24 Z
+  " fill="#C96B1E"/>
+
+  <!-- Traço inferior do F = língua de fogo média (azul médio) -->
+  <path d="
+    M 22,40
+    L 22,36
+    C 22,34 24,32 26,32
+    L 39,31
+    C 43,30.5 44,33 42,36
+    C 40,38 38,38 35,38
+    L 28,40 Z
+  " fill="#4A8BBF"/>
+
+  <!-- Ponto de calor no topo da chama — âmbar -->
+  <ellipse cx="27" cy="8" rx="4" ry="4" fill="#C96B1E" opacity="0.9"/>
+  <ellipse cx="27" cy="8" rx="2" ry="2" fill="#F5C89A"/>
+
+  <!-- VILA -->
+  <text
+    x="62" y="30"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="11"
+    font-weight="400"
+    fill="#4A8BBF"
+    letter-spacing="3"
+  >VILA</text>
+
+  <!-- Focolare -->
+  <text
+    x="62" y="52"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#2B5F8A"
+    letter-spacing="0.5"
+  >Focolare</text>
+
+  <text
+    x="63" y="65"
+    font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif"
+    font-size="8"
+    font-weight="400"
+    fill="#64748B"
+    letter-spacing="1"
+  >Cuidado com alma</text>
+</svg>
