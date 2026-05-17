@@ -4,25 +4,55 @@ import { formatDate } from '@/lib/utils/formatters'
 import Link from 'next/link'
 import { CheckCircle, X, Clock, ClipboardCheck, ArrowLeft } from 'lucide-react'
 import { subDays } from 'date-fns'
+import GradeMedicacaoClient from '@/app/(dashboard)/medicacoes/GradeMedicacaoClient'
+import { gerarDiarioMedicacoesDoDia } from '@/lib/medicacoes/diario'
+
+function getSaoPauloDateKey(date = new Date()): string {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Sao_Paulo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date)
+
+  const year = parts.find(p => p.type === 'year')?.value
+  const month = parts.find(p => p.type === 'month')?.value
+  const day = parts.find(p => p.type === 'day')?.value
+
+  return `${year}-${month}-${day}`
+}
 
 export default async function MedicacoesResidentePage({ params }: { params: { id: string } }) {
   const supabase = await createClient()
 
   const { data: residente } = await supabase
     .from('residentes')
-    .select('id, nome, nivel_risco, alergias')
+    .select('id, nome, quarto, nivel_risco, alergias')
     .eq('id', params.id)
     .single()
 
   if (!residente) notFound()
 
-  const [{ data: prescricoes }, { data: historico }] = await Promise.all([
+  await gerarDiarioMedicacoesDoDia(supabase, { residenteId: params.id })
+
+  const dataKey = getSaoPauloDateKey()
+  const inicioDia = new Date(`${dataKey}T00:00:00-03:00`)
+  const fimDia = new Date(`${dataKey}T23:59:59-03:00`)
+
+  const [{ data: prescricoes }, { data: administracoesHoje }, { data: historico }, { data: { user } }] = await Promise.all([
     supabase
       .from('prescricoes_medicas')
-      .select('*, itens:prescricao_itens(*), prescrito_por_user:prescrito_por(id, nome_completo)')
+      .select('*, itens:prescricao_itens(*)')
       .eq('residente_id', params.id)
       .eq('status', 'ativa')
       .order('created_at', { ascending: false }),
+    supabase
+      .from('administracoes_medicamento')
+      .select('*, residente:residente_id(id, nome, quarto, foto_url, alergias), prescricao_item:prescricao_item_id(id, descricao, dose, via, horarios, tipo, observacoes)')
+      .eq('residente_id', params.id)
+      .gte('horario_previsto', inicioDia.toISOString())
+      .lte('horario_previsto', fimDia.toISOString())
+      .order('horario_previsto', { ascending: true }),
     supabase
       .from('administracoes_medicamento')
       .select('*, prescricao_item:prescricao_item_id(descricao, dose)')
@@ -30,7 +60,18 @@ export default async function MedicacoesResidentePage({ params }: { params: { id
       .gte('horario_previsto', subDays(new Date(), 7).toISOString())
       .order('horario_previsto', { ascending: false })
       .limit(50),
+    supabase.auth.getUser(),
   ])
+
+  const { data: profile } = await supabase
+    .from('user_profiles')
+    .select('id, role, ativo')
+    .eq('id', user?.id ?? '')
+    .single()
+
+  const podeChecar = Boolean(
+    profile?.ativo && ['admin', 'enfermeiro', 'tecnico_enfermagem'].includes(profile.role)
+  )
 
   const totalAdm = (historico ?? []).filter((a: any) => a.status === 'administrado').length
   const totalPrev = (historico ?? []).length
@@ -38,7 +79,6 @@ export default async function MedicacoesResidentePage({ params }: { params: { id
 
   return (
     <div className="space-y-5 animate-fade-in">
-      {/* Navegação de volta */}
       <div className="flex items-center gap-3 flex-wrap">
         <Link
           href={`/residentes/${params.id}`}
@@ -58,12 +98,11 @@ export default async function MedicacoesResidentePage({ params }: { params: { id
       </div>
 
       <div>
-        <h1 className="text-xl font-bold">Medicações</h1>
+        <h1 className="text-xl font-bold">Diário de Medicações</h1>
         <p className="text-muted text-sm">{residente.nome}</p>
         {residente.alergias && <p className="text-xs text-red-600 font-semibold mt-0.5">⚠ Alergias: {residente.alergias}</p>}
       </div>
 
-      {/* Aderência */}
       {aderencia !== null && (
         <div className={`card-sm flex items-center gap-4 ${aderencia >= 95 ? 'border-l-4 border-l-green-500' : aderencia >= 80 ? 'border-l-4 border-l-yellow-500' : 'border-l-4 border-l-red-500'}`}>
           <div>
@@ -74,21 +113,28 @@ export default async function MedicacoesResidentePage({ params }: { params: { id
         </div>
       )}
 
-      {/* Prescrições ativas */}
+      <GradeMedicacaoClient
+        turno={{ label: 'Diário do paciente — hoje', inicio: '00:00', fim: '23:59' }}
+        grupos={[{ residente, adms: administracoesHoje ?? [] }]}
+        totalPendente={(administracoesHoje ?? []).filter((a: any) => a.status === 'adiado').length}
+        agora={new Date().toISOString()}
+        podeChecar={podeChecar}
+      />
+
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-bold text-foreground">Prescrições Ativas</h2>
+          <h2 className="text-base font-bold text-foreground">Medicações regulares ativas</h2>
           <Link href={`/residentes/${params.id}/prescricoes`} className="text-xs text-primary-600 hover:underline">
             Gerenciar →
           </Link>
         </div>
         {!prescricoes || prescricoes.length === 0 ? (
-          <p className="text-muted text-sm">Nenhuma prescrição ativa.</p>
+          <p className="text-muted text-sm">Nenhuma medicação regular ativa.</p>
         ) : (
           <div className="space-y-3">
             {prescricoes.map(presc => (
               <div key={presc.id} className="space-y-1.5">
-                {(presc.itens ?? []).filter((i: any) => i.ativo).map((item: any) => (
+                {(presc.itens ?? []).filter((i: any) => i.ativo && i.tipo === 'medicamento').map((item: any) => (
                   <div key={item.id} className="flex items-center gap-3 p-2.5 rounded-lg bg-primary-50 text-sm">
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-foreground">{item.descricao}</p>
@@ -105,7 +151,6 @@ export default async function MedicacoesResidentePage({ params }: { params: { id
         )}
       </div>
 
-      {/* Histórico recente */}
       <div className="card">
         <h2 className="text-base font-bold text-foreground mb-4">Histórico (7 dias)</h2>
         {!historico || historico.length === 0 ? (

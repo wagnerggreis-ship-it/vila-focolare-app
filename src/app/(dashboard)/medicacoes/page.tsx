@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
-import { formatTime } from '@/lib/utils/formatters'
-import { Pill, CheckCircle, Clock, AlertCircle } from 'lucide-react'
 import GradeMedicacaoClient from './GradeMedicacaoClient'
+import { gerarDiarioMedicacoesDoDia } from '@/lib/medicacoes/diario'
 
 function getTurnoAtual(): { label: string; inicio: string; fim: string } {
   const h = new Date().getHours()
@@ -15,20 +14,35 @@ export default async function GradeMedicacoesPage() {
   const turno = getTurnoAtual()
   const agora = new Date()
 
+  await gerarDiarioMedicacoesDoDia(supabase)
+
   const hojeISO = agora.toISOString().split('T')[0]
   const inicioTurno = new Date(`${hojeISO}T${turno.inicio}:00`)
   const fimTurno = new Date(`${hojeISO}T${turno.fim === '06:00' ? '23:59' : turno.fim}:00`)
 
-  const { data: administracoes } = await supabase
-    .from('administracoes_medicamento')
-    .select(`
-      *,
-      residente:residente_id(id, nome, quarto, foto_url, alergias),
-      prescricao_item:prescricao_item_id(id, descricao, dose, via, horarios, tipo)
-    `)
-    .gte('horario_previsto', inicioTurno.toISOString())
-    .lte('horario_previsto', fimTurno.toISOString())
-    .order('horario_previsto')
+  const [{ data: administracoes }, { data: { user } }] = await Promise.all([
+    supabase
+      .from('administracoes_medicamento')
+      .select(`
+        *,
+        residente:residente_id(id, nome, quarto, foto_url, alergias),
+        prescricao_item:prescricao_item_id(id, descricao, dose, via, horarios, tipo, observacoes)
+      `)
+      .gte('horario_previsto', inicioTurno.toISOString())
+      .lte('horario_previsto', fimTurno.toISOString())
+      .order('horario_previsto'),
+    supabase.auth.getUser(),
+  ])
+
+  const { data: profile } = await supabase
+    .from('user_profiles')
+    .select('id, role, ativo')
+    .eq('id', user?.id ?? '')
+    .single()
+
+  const podeChecar = Boolean(
+    profile?.ativo && ['admin', 'enfermeiro', 'tecnico_enfermagem'].includes(profile.role)
+  )
 
   // Agrupar por residente
   const porResidente = new Map<string, { residente: any; adms: any[] }>()
@@ -43,9 +57,9 @@ export default async function GradeMedicacoesPage() {
 
   const grupos = Array.from(porResidente.values()).sort((a, b) => a.residente.nome.localeCompare(b.residente.nome))
 
-  const totalPendente = (administracoes ?? []).filter((a: any) => a.status === 'pendente' || (!a.status && new Date(a.horario_previsto) <= agora)).length
+  const totalPendente = (administracoes ?? []).filter((a: any) => a.status === 'adiado' || (!a.status && new Date(a.horario_previsto) <= agora)).length
 
   return (
-    <GradeMedicacaoClient turno={turno} grupos={grupos} totalPendente={totalPendente} agora={agora.toISOString()} />
+    <GradeMedicacaoClient turno={turno} grupos={grupos} totalPendente={totalPendente} agora={agora.toISOString()} podeChecar={podeChecar} />
   )
 }

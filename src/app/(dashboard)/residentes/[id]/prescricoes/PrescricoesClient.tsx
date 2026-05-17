@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { formatDate } from '@/lib/utils/formatters'
-import { Plus, X, CheckCircle, Clock } from 'lucide-react'
+import { Plus, X, CheckCircle, Clock, ClipboardCheck } from 'lucide-react'
 import type { PrescricaoMedica, PrescricaoItem } from '@/lib/types/database'
 
 const HORARIOS_PADRAO = ['06:00','08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00','00:00']
@@ -68,19 +69,24 @@ export default function PrescricoesClient({ residente, prescricoes: initialPresc
     <div className="space-y-5 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold">Prescrições</h1>
-          <p className="text-muted text-sm">{residente.nome}</p>
+<h1 className="text-xl font-bold">Medicações regulares</h1>
+              <p className="text-muted text-sm">{residente.nome}</p>
           {residente.alergias && <p className="text-xs text-red-600 font-semibold mt-0.5">⚠ Alergias: {residente.alergias}</p>}
         </div>
-        {podePrescrever && (
-          <button onClick={() => setShowNova(true)} className="btn-accent flex items-center gap-2">
-            <Plus className="w-4 h-4" />Nova prescrição
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          <Link href={`/residentes/${residente.id}/medicacoes`} className="btn-secondary flex items-center gap-2">
+            <ClipboardCheck className="w-4 h-4" />Diário
+          </Link>
+          {podePrescrever && (
+            <button onClick={() => setShowNova(true)} className="btn-accent flex items-center gap-2">
+              <Plus className="w-4 h-4" />Inserir medicação regular
+            </button>
+          )}
+        </div>
       </div>
 
       {prescricoes.length === 0 ? (
-        <div className="card text-center py-12"><p className="text-muted">Nenhuma prescrição registrada.</p></div>
+        <div className="card text-center py-12"><p className="text-muted">Nenhuma medicação regular cadastrada para este morador.</p></div>
       ) : (
         <div className="space-y-4">
           {prescricoes.map(presc => (
@@ -135,7 +141,8 @@ export default function PrescricoesClient({ residente, prescricoes: initialPresc
       {showNova && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5">
-            <h2 className="text-lg font-bold">Nova Prescrição Médica</h2>
+            <h2 className="text-lg font-bold">Inserir medicação regular</h2>
+            <p className="text-sm text-muted">Os medicamentos ativos com horários definidos serão puxados automaticamente para o diário diário de medicações do paciente.</p>
             {residente.alergias && <div className="p-3 bg-red-50 border border-red-200 rounded-md text-sm text-red-700 font-semibold">⚠ Alergias: {residente.alergias}</div>}
 
             {itens.map((item, idx) => (
@@ -197,7 +204,7 @@ export default function PrescricoesClient({ residente, prescricoes: initialPresc
             {error && <p className="text-sm text-red-600">{error}</p>}
             <div className="flex gap-3">
               <button onClick={() => setShowNova(false)} className="btn-secondary flex-1">Cancelar</button>
-              <button onClick={salvarPrescricao} disabled={isPending} className="btn-accent flex-1">{isPending ? 'Salvando...' : 'Salvar prescrição'}</button>
+              <button onClick={salvarPrescricao} disabled={isPending} className="btn-accent flex-1">{isPending ? 'Salvando...' : 'Salvar medicação regular'}</button>
             </div>
           </div>
         </div>

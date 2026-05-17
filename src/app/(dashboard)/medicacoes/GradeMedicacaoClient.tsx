@@ -3,16 +3,17 @@
 import { useState, useTransition } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { formatTime } from '@/lib/utils/formatters'
-import { CheckCircle, Clock, AlertCircle, Pill, X } from 'lucide-react'
+import { CheckCircle, Clock, AlertCircle, Pill, X, ShieldAlert } from 'lucide-react'
 
 interface Props {
   turno: { label: string; inicio: string; fim: string }
   grupos: { residente: any; adms: any[] }[]
   totalPendente: number
   agora: string
+  podeChecar?: boolean
 }
 
-export default function GradeMedicacaoClient({ turno, grupos, totalPendente, agora }: Props) {
+export default function GradeMedicacaoClient({ turno, grupos, totalPendente, agora, podeChecar = false }: Props) {
   const [gruposLocal, setGruposLocal] = useState(grupos)
   const [modalAdm, setModalAdm] = useState<any | null>(null)
   const [motivo, setMotivo] = useState('')
@@ -43,7 +44,13 @@ export default function GradeMedicacaoClient({ turno, grupos, totalPendente, ago
 
       setGruposLocal(prev => prev.map(g => ({
         ...g,
-        adms: g.adms.map(a => a.id === admId ? { ...a, status } : a),
+        adms: g.adms.map(a => a.id === admId ? {
+          ...a,
+          status,
+          horario_realizado: status === 'administrado' ? new Date().toISOString() : null,
+          administrado_por: user?.id,
+          motivo_nao_administracao: status === 'nao_administrado' ? motivo : null,
+        } : a),
       })))
       setModalAdm(null)
       setMotivo('')
@@ -72,7 +79,7 @@ export default function GradeMedicacaoClient({ turno, grupos, totalPendente, ago
       </div>
 
       {gruposLocal.length === 0 ? (
-        <div className="card text-center py-12"><p className="text-muted">Nenhuma medicação programada para este turno.</p></div>
+        <div className="card text-center py-12"><p className="text-muted">Nenhuma medicação regular programada para este turno.</p></div>
       ) : (
         gruposLocal.map(({ residente, adms }) => (
           <div key={residente.id} className="card">
@@ -121,12 +128,18 @@ export default function GradeMedicacaoClient({ turno, grupos, totalPendente, ago
                     </div>
 
                     {st !== 'administrado' && st !== 'nao_administrado' && (
-                      <button
-                        onClick={() => setModalAdm(adm)}
-                        className="btn-accent text-xs px-3 py-1.5 flex-shrink-0"
-                      >
-                        Checar
-                      </button>
+                      podeChecar ? (
+                        <button
+                          onClick={() => setModalAdm(adm)}
+                          className="btn-accent text-xs px-3 py-1.5 flex-shrink-0"
+                        >
+                          Checar
+                        </button>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-medium text-muted bg-gray-100 px-2 py-1 rounded-md flex-shrink-0">
+                          <ShieldAlert className="w-3 h-3" /> restrito
+                        </span>
+                      )
                     )}
                   </div>
                 )
@@ -137,7 +150,7 @@ export default function GradeMedicacaoClient({ turno, grupos, totalPendente, ago
       )}
 
       {/* Modal de checagem */}
-      {modalAdm && (
+      {modalAdm && podeChecar && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 space-y-5">
             {/* Confirmar identidade */}

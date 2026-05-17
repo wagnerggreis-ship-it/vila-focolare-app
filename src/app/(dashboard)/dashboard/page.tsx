@@ -36,7 +36,7 @@ export default async function DashboardPage() {
     supabase.from('notas_prontuario').select('*, autor:autor_id(id, nome_completo, role), residente:residente_id(id, nome)').order('created_at', { ascending: false }).limit(6),
     supabase.from('planos_cuidado').select('*', { count: 'exact', head: true }).eq('status', 'ativo').is('assinado_por', null),
     supabase.from('registros_rotina').select('residente_id, tipo_rotina, status').gte('registrado_em', hoje.toISOString()),
-    supabase.from('administracoes_medicamento').select('residente_id, status, horario_previsto, prescricao:prescricao_id(id, medicamento_nome)').lt('horario_previsto', new Date().toISOString()).in('status', ['pendente']).limit(10),
+    supabase.from('administracoes_medicamento').select('residente_id, status, horario_previsto, prescricao_item:prescricao_item_id(id, descricao, dose, via)').lt('horario_previsto', new Date().toISOString()).eq('status', 'adiado').limit(10),
   ])
 
   const lista = (residentes ?? []) as Residente[]
