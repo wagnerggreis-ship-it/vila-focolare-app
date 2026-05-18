@@ -26,16 +26,31 @@ export default function UsuariosClient({ usuarios: initialUsuarios }: Props) {
   async function criarUsuario() {
     setError(null)
     startTransition(async () => {
-      const resp = await fetch('/api/admin/criar-usuario', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      const resultado = await resp.json()
-      if (!resp.ok) { setError(resultado.error ?? 'Erro ao criar usuário'); return }
-      setUsuarios([resultado.profile, ...usuarios])
-      setShowModal(false)
-      setForm({ nome_completo: '', email: '', role: 'enfermeiro', registro_profissional: '', especialidade: '' })
+      try {
+        const resp = await fetch('/api/admin/criar-usuario', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        })
+        const isJson = resp.headers.get('content-type')?.includes('application/json')
+        const resultado = isJson ? await resp.json() : null
+
+        if (!resp.ok) {
+          setError(resultado?.error ?? 'Não foi possível criar o usuário. Tente novamente em instantes.')
+          return
+        }
+
+        if (!resultado?.profile) {
+          setError('Usuário criado, mas o perfil não foi retornado. Atualize a página para conferir a lista.')
+          return
+        }
+
+        setUsuarios([resultado.profile, ...usuarios])
+        setShowModal(false)
+        setForm({ nome_completo: '', email: '', role: 'enfermeiro', registro_profissional: '', especialidade: '' })
+      } catch {
+        setError('Não foi possível criar o usuário. Verifique a conexão e tente novamente.')
+      }
     })
   }
 
