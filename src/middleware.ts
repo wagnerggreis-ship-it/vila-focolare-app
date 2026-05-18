@@ -3,7 +3,8 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
-  const isAuthRoute   = pathname.startsWith('/login')
+  const isLoginRoute  = pathname.startsWith('/login')
+  const isAuthRoute   = pathname.startsWith('/login') || pathname.startsWith('/auth/callback') || pathname.startsWith('/nova-senha')
   const isPublicRoute = pathname === '/'
   const isAdminRoute  = pathname.startsWith('/admin')
 
@@ -19,7 +20,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(url)
     }
 
-    if (isDemo && isAuthRoute) {
+    if (isDemo && isLoginRoute) {
       const url = request.nextUrl.clone()
       url.pathname = '/dashboard'
       return NextResponse.redirect(url)
@@ -65,7 +66,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // 2. Já autenticado tentando acessar /login → redireciona para /dashboard
-  if (user && isAuthRoute) {
+  if (user && isLoginRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)
