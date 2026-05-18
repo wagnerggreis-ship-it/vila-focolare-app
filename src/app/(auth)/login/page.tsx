@@ -1,19 +1,34 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { signIn } from '@/lib/auth/actions'
-import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react'
+import { requestPasswordReset, signIn } from '@/lib/auth/actions'
+import { Eye, EyeOff, Lock, Mail, AlertCircle, CheckCircle2, KeyRound } from 'lucide-react'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const [showAccessHelp, setShowAccessHelp] = useState(false)
+  const [email, setEmail] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [resetMessage, setResetMessage] = useState<string | null>(null)
+  const [resetError, setResetError] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
+  const [isResetPending, startResetTransition] = useTransition()
 
   async function handleSubmit(formData: FormData) {
     setError(null)
     startTransition(async () => {
       const result = await signIn(formData)
       if (result?.error) setError(result.error)
+    })
+  }
+
+  async function handlePasswordReset(formData: FormData) {
+    setResetError(null)
+    setResetMessage(null)
+    startResetTransition(async () => {
+      const result = await requestPasswordReset(formData)
+      if (result?.error) setResetError(result.error)
+      if (result?.success) setResetMessage(result.success)
     })
   }
 
@@ -53,8 +68,8 @@ export default function LoginPage() {
           <p className="text-muted text-sm mb-6">Acesse com suas credenciais</p>
 
           {error && (
-            <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-md mb-5 text-sm text-red-700">
-              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-md mb-5 text-sm text-red-700">
+              <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
@@ -70,6 +85,8 @@ export default function LoginPage() {
                   type="email"
                   autoComplete="email"
                   required
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   placeholder="seu@email.com"
                   className="input pl-10"
                 />
@@ -93,6 +110,7 @@ export default function LoginPage() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-foreground transition-colors"
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -114,6 +132,74 @@ export default function LoginPage() {
               )}
             </button>
           </form>
+
+          <div className="mt-5 pt-5 border-t border-gray-100">
+            <button
+              type="button"
+              onClick={() => setShowAccessHelp(!showAccessHelp)}
+              className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900 transition-colors"
+            >
+              <KeyRound className="w-4 h-4" />
+              Primeiro acesso / esqueci minha senha
+            </button>
+
+            {showAccessHelp && (
+              <div className="mt-4 rounded-xl bg-primary-50 border border-primary-100 p-4">
+                <p className="text-sm text-primary-900 mb-3">
+                  Se você recebeu um convite, abra o link do email para definir sua senha. Se o link expirou ou você não recebeu a mensagem, informe seu email abaixo para receber um novo link de acesso.
+                </p>
+
+                {resetMessage && (
+                  <div className="flex items-start gap-2 p-3 bg-green-50 border border-green-200 rounded-md mb-3 text-sm text-green-700">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span>{resetMessage}</span>
+                  </div>
+                )}
+
+                {resetError && (
+                  <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-md mb-3 text-sm text-red-700">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span>{resetError}</span>
+                  </div>
+                )}
+
+                <form action={handlePasswordReset} className="space-y-3">
+                  <div>
+                    <label htmlFor="reset-email" className="label">Email cadastrado</label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+                      <input
+                        id="reset-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder="profissional@email.com"
+                        className="input pl-10"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isResetPending}
+                    className="btn-secondary w-full flex items-center justify-center gap-2"
+                  >
+                    {isResetPending ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-primary-800/30 border-t-primary-800 rounded-full animate-spin" />
+                        Enviando link...
+                      </>
+                    ) : (
+                      'Enviar link de acesso'
+                    )}
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
         </div>
 
         <p className="text-center text-white/40 text-xs mt-6">

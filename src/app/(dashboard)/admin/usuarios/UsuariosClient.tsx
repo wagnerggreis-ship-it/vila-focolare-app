@@ -22,9 +22,11 @@ export default function UsuariosClient({ usuarios: initialUsuarios }: Props) {
   const [form, setForm] = useState({ nome_completo: '', email: '', role: 'enfermeiro' as RoleUsuario, registro_profissional: '', especialidade: '' })
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
 
   async function criarUsuario() {
     setError(null)
+    setSuccess(null)
     startTransition(async () => {
       try {
         const resp = await fetch('/api/admin/criar-usuario', {
@@ -46,6 +48,7 @@ export default function UsuariosClient({ usuarios: initialUsuarios }: Props) {
         }
 
         setUsuarios([resultado.profile, ...usuarios])
+        setSuccess(`Perfil criado e convite enviado para ${resultado.profile.email}. O profissional deve abrir o email e definir a própria senha.`)
         setShowModal(false)
         setForm({ nome_completo: '', email: '', role: 'enfermeiro', registro_profissional: '', especialidade: '' })
       } catch {
@@ -73,6 +76,12 @@ export default function UsuariosClient({ usuarios: initialUsuarios }: Props) {
           <Plus className="w-4 h-4" />Novo usuário
         </button>
       </div>
+
+      {success && (
+        <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+          {success}
+        </div>
+      )}
 
       <div className="table-container">
         <table className="table">
@@ -138,7 +147,7 @@ export default function UsuariosClient({ usuarios: initialUsuarios }: Props) {
               <div><label className="label">Especialidade</label><input value={form.especialidade} onChange={e => setForm({...form, especialidade: e.target.value})} className="input" /></div>
             </div>
             {error && <p className="text-sm text-red-600">{error}</p>}
-            <p className="text-xs text-muted">O usuário receberá um email para definir sua senha.</p>
+            <p className="text-xs text-muted">O usuário receberá um email de convite. No primeiro acesso, deve clicar no link recebido e definir sua própria senha. Se o link expirar, use “Primeiro acesso / esqueci minha senha” na tela de login.</p>
             <div className="flex gap-3">
               <button onClick={() => setShowModal(false)} className="btn-secondary flex-1">Cancelar</button>
               <button onClick={criarUsuario} disabled={isPending || !form.nome_completo || !form.email} className="btn-accent flex-1">{isPending ? 'Criando...' : 'Criar usuário'}</button>

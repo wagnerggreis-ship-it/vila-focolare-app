@@ -87,11 +87,15 @@ export async function POST(request: Request) {
     },
   })
 
+  const origin = request.headers.get('origin') ?? process.env.NEXT_PUBLIC_SITE_URL ?? ''
+  const redirectTo = origin ? `${origin}/auth/callback?next=/nova-senha` : undefined
+
   const { data: convite, error: conviteError } = await admin.auth.admin.inviteUserByEmail(email, {
     data: {
       nome_completo: nomeCompleto,
       role,
     },
+    redirectTo,
   })
 
   if (conviteError || !convite.user) {
