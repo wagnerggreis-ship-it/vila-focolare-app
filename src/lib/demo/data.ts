@@ -1,5 +1,5 @@
 // ────────────────────────────────────────────────────────────────────────────
-// Demo data — Vila Focolare  |  apenas para NEXT_PUBLIC_DEMO_MODE=true
+// Demo data — Villa Focolari  |  apenas para NEXT_PUBLIC_DEMO_MODE=true
 // Não afeta dados reais do Supabase.
 // ────────────────────────────────────────────────────────────────────────────
 

@@ -73,7 +73,7 @@ export default function NovoResidentePage() {
         </Link>
         <div>
           <h1 className="text-2xl font-bold text-foreground">Nova Admissão</h1>
-          <p className="text-muted text-sm">Cadastro de novo residente na Vila Focolare</p>
+          <p className="text-muted text-sm">Cadastro de novo residente na Villa Focolari</p>
         </div>
       </div>
 

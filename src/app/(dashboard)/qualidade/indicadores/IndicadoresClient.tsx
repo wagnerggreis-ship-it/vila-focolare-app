@@ -113,7 +113,7 @@ export default function IndicadoresClient({
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Indicadores de Qualidade e Segurança</h1>
-          <p className="text-muted text-sm">Monitoramento contínuo do cuidado na Vila Focolare</p>
+          <p className="text-muted text-sm">Monitoramento contínuo do cuidado na Villa Focolari</p>
         </div>
         {isAdmin && (
           <button onClick={() => setShowModal(true)} className="btn-accent flex items-center gap-2">

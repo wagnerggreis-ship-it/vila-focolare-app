@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -52,18 +53,16 @@ export function Sidebar({ profile }: SidebarProps) {
     <aside className="hidden lg:flex flex-col w-64 bg-primary-800 shadow-sidebar min-h-screen fixed left-0 top-0 z-40">
       {/* Logo */}
       <div className="flex items-center px-5 py-5 border-b border-white/10">
-        <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-40 h-auto">
-          <path d="M 8,68 C 8,60 8,50 10,42 C 12,32 18,22 28,14 C 32,11 34,10 36,11 C 32,14 28,20 26,28 C 24,36 24,46 24,56 L 22,68 Z" fill="#FFFFFF"/>
-          <path d="M 64,68 C 64,60 64,50 62,42 C 60,32 54,22 44,14 C 40,11 38,10 36,11 C 40,14 44,20 46,28 C 48,36 48,46 48,56 L 50,68 Z" fill="#FFFFFF" opacity="0.8"/>
-          <path d="M 36,14 C 30,20 26,30 26,40 C 26,52 30,62 36,68 C 42,62 46,52 46,40 C 46,30 42,20 36,14 Z" fill="#F5C89A"/>
-          <ellipse cx="36" cy="44" rx="7" ry="13" fill="#FFF5E8"/>
-          <ellipse cx="36" cy="46" rx="4" ry="8" fill="#FFFFFF" opacity="0.9"/>
-          <circle cx="36" cy="10" r="4" fill="#F5C89A"/>
-          <circle cx="36" cy="10" r="2" fill="#FFFFFF"/>
-          <text x="80" y="32" fontFamily="'Plus Jakarta Sans','Segoe UI',sans-serif" fontSize="11" fontWeight="400" fill="rgba(255,255,255,0.65)" letterSpacing="3">VILA</text>
-          <text x="80" y="56" fontFamily="'Plus Jakarta Sans','Segoe UI',sans-serif" fontSize="23" fontWeight="700" fill="#FFFFFF" letterSpacing="0.5">Focolare</text>
-          <text x="81" y="69" fontFamily="'Plus Jakarta Sans','Segoe UI',sans-serif" fontSize="8" fontWeight="400" fill="rgba(255,255,255,0.5)" letterSpacing="1.2">Cuidado com alma</text>
-        </svg>
+        <div className="bg-white rounded-xl px-3 py-2">
+          <Image
+            src="/logo-villa-focolari.png"
+            alt="Villa Focolari — Cuidado com alma"
+            width={220}
+            height={62}
+            priority
+            className="h-auto w-44"
+          />
+        </div>
       </div>
 
       {/* Perfil do usuário */}
@@ -126,7 +125,7 @@ export function Sidebar({ profile }: SidebarProps) {
           </button>
         </form>
         <p className="text-white/30 text-xs text-center mt-3">
-          Vila Focolare © {new Date().getFullYear()}
+          Villa Focolari © {new Date().getFullYear()}
         </p>
       </div>
     </aside>

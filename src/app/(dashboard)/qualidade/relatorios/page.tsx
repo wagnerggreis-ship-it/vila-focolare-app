@@ -119,7 +119,7 @@ export default async function RelatoriosPage({
           <h2 className="text-sm font-bold text-primary-800 uppercase tracking-wide">Resumo Executivo</h2>
         </div>
         <p className="text-sm text-foreground leading-relaxed">
-          No período analisado, a Vila Focolare acompanhou{' '}
+          No período analisado, a Villa Focolari acompanhou{' '}
           <strong>{totalResidentes} moradores ativos</strong>, com{' '}
           <strong>{totalRotinasPeriodo} registros de rotina</strong> realizados pela equipe.
           {aderencia !== null && (

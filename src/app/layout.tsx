@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Vila Focolare — Gestão do Cuidado',
-  description: 'Gestão do cuidado, rotina e segurança dos moradores — Vila Focolare · Igarassu-PE',
+  title: 'Villa Focolari — Gestão do Cuidado',
+  description: 'Gestão do cuidado, rotina e segurança dos moradores — Villa Focolari · Igarassu-PE',
   icons: {
-    icon: '/logo-icon.svg',
+    icon: '/logo-villa-focolari.png',
   },
 }
 
